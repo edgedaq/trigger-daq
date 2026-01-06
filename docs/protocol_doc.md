@@ -1,5 +1,9 @@
 # 通用数据采集系统通信协议规范 V6 (增强版)
 
+简体中文
+
+> **Note**: English version coming soon. For now, please use translation tools or refer to the [README_EN.md](../README_EN.md) for system overview.
+
 ## 1. 概述
 
 本规范旨在为一套高性能、可扩展的通用数据采集系统，定义标准化的通信协议。它不局限于任何特定应用，而是提供了一个灵活的框架，能够支持多通道、多速率的复杂采集任务，并特别增强了触发模式下的数据管理能力。

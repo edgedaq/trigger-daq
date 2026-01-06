@@ -1,19 +1,19 @@
-# 数据采集系统前端开发API文档
+# Data Acquisition System Frontend API Documentation
 
-[English](api_doc_en.md) | 简体中文
+English | [简体中文](api_doc.md)
 
-## 概述
+## Overview
 
-本文档详细描述了高性能数据采集与处理系统的所有前端API接口。系统提供REST API用于控制和管理，WebSocket接口用于实时数据流传输。
+This document describes all frontend API interfaces for the high-performance data acquisition and processing system. The system provides REST API for control and management, and WebSocket interface for real-time data streaming.
 
-### 服务地址
+### Service Addresses
 
 - **HTTP API**: `http://127.0.0.1:8080`
 - **WebSocket**: `ws://127.0.0.1:8081`
 
-### 通用响应格式
+### Common Response Format
 
-所有API响应都遵循统一的格式：
+All API responses follow a unified format:
 
 ```json
 {
@@ -24,17 +24,17 @@
 }
 ```
 
-## 系统控制API
+## System Control API
 
-### 1. 获取系统状态
+### 1. Get System Status
 
-**接口**: `GET /api/control/status`
+**Endpoint**: `GET /api/control/status`
 
-**描述**: 获取系统的完整状态信息，包括设备连接、数据处理、触发模式等状态。
+**Description**: Get complete system status including device connection, data processing, trigger mode, etc.
 
-**请求**: 无需参数
+**Request**: No parameters required
 
-**响应示例**:
+**Response Example**:
 ```json
 {
   "success": true,
@@ -60,26 +60,26 @@
 }
 ```
 
-**字段说明**:
-- `data_collection_active`: 数据采集是否激活
-- `device_connected`: 设备连接状态
-- `connected_clients`: WebSocket连接的客户端数量
-- `packets_processed`: 已处理的数据包总数
-- `uptime_seconds`: 系统运行时间（秒）
-- `memory_usage_mb`: 内存使用量（MB）
-- `connection_type`: 连接类型（"serial"或"socket"）
-- `current_mode`: 当前工作模式（"continuous"或"trigger"）
-- `trigger_status`: 触发模式详细状态
+**Field Descriptions**:
+- `data_collection_active`: Whether data collection is active
+- `device_connected`: Device connection status
+- `connected_clients`: Number of WebSocket connected clients
+- `packets_processed`: Total processed packets
+- `uptime_seconds`: System uptime in seconds
+- `memory_usage_mb`: Memory usage in MB
+- `connection_type`: Connection type ("serial" or "socket")
+- `current_mode`: Current working mode ("continuous" or "trigger")
+- `trigger_status`: Detailed trigger mode status
 
-### 2. 启动数据采集
+### 2. Start Data Collection
 
-**接口**: `POST /api/control/start`
+**Endpoint**: `POST /api/control/start`
 
-**描述**: 开始数据采集流程。
+**Description**: Start data collection process.
 
-**请求**: 无需参数
+**Request**: No parameters required
 
-**响应示例**:
+**Response Example**:
 ```json
 {
   "success": true,
@@ -89,15 +89,15 @@
 }
 ```
 
-### 3. 停止数据采集
+### 3. Stop Data Collection
 
-**接口**: `POST /api/control/stop`
+**Endpoint**: `POST /api/control/stop`
 
-**描述**: 停止数据采集流程。
+**Description**: Stop data collection process.
 
-**请求**: 无需参数
+**Request**: No parameters required
 
-**响应示例**:
+**Response Example**:
 ```json
 {
   "success": true,
@@ -107,15 +107,15 @@
 }
 ```
 
-### 4. 设备Ping测试
+### 4. Device Ping Test
 
-**接口**: `POST /api/control/ping`
+**Endpoint**: `POST /api/control/ping`
 
-**描述**: 向设备发送ping命令测试连通性。
+**Description**: Send ping command to test device connectivity.
 
-**请求**: 无需参数
+**Request**: No parameters required
 
-**响应示例**:
+**Response Example**:
 ```json
 {
   "success": true,
@@ -125,15 +125,15 @@
 }
 ```
 
-### 5. 获取设备信息
+### 5. Get Device Information
 
-**接口**: `POST /api/control/device_info`
+**Endpoint**: `POST /api/control/device_info`
 
-**描述**: 请求获取设备详细信息。
+**Description**: Request detailed device information.
 
-**请求**: 无需参数
+**Request**: No parameters required
 
-**响应示例**:
+**Response Example**:
 ```json
 {
   "success": true,
@@ -143,17 +143,17 @@
 }
 ```
 
-## 模式控制API
+## Mode Control API
 
-### 6. 设置连续模式
+### 6. Set Continuous Mode
 
-**接口**: `POST /api/control/continuous_mode`
+**Endpoint**: `POST /api/control/continuous_mode`
 
-**描述**: 将设备切换到连续采集模式。
+**Description**: Switch device to continuous acquisition mode.
 
-**请求**: 无需参数
+**Request**: No parameters required
 
-**响应示例**:
+**Response Example**:
 ```json
 {
   "success": true,
@@ -163,15 +163,15 @@
 }
 ```
 
-### 7. 设置触发模式
+### 7. Set Trigger Mode
 
-**接口**: `POST /api/control/trigger_mode`
+**Endpoint**: `POST /api/control/trigger_mode`
 
-**描述**: 将设备切换到触发采集模式。
+**Description**: Switch device to trigger acquisition mode.
 
-**请求**: 无需参数
+**Request**: No parameters required
 
-**响应示例**:
+**Response Example**:
 ```json
 {
   "success": true,
@@ -181,15 +181,15 @@
 }
 ```
 
-### 8. 请求触发数据
+### 8. Request Trigger Data
 
-**接口**: `POST /api/control/request_trigger_data`
+**Endpoint**: `POST /api/control/request_trigger_data`
 
-**描述**: 手动请求设备发送触发缓冲数据（仅在触发模式下有效）。
+**Description**: Manually request device to send trigger buffer data (only valid in trigger mode).
 
-**请求**: 无需参数
+**Request**: No parameters required
 
-**响应示例**:
+**Response Example**:
 ```json
 {
   "success": true,
@@ -199,7 +199,7 @@
 }
 ```
 
-**错误响应**:
+**Error Response**:
 ```json
 {
   "success": false,
@@ -209,13 +209,13 @@
 }
 ```
 
-### 9. 配置数据流
+### 9. Configure Data Stream
 
-**接口**: `POST /api/control/configure`
+**Endpoint**: `POST /api/control/configure`
 
-**描述**: 配置设备的采样参数，包括通道、采样率和数据格式。
+**Description**: Configure device sampling parameters including channels, sample rate, and data format.
 
-**请求体**:
+**Request Body**:
 ```json
 {
   "channels": [
@@ -233,12 +233,12 @@
 }
 ```
 
-**参数说明**:
-- `channel_id`: 通道ID（0-15）
-- `sample_rate`: 采样率（Hz）
-- `format`: 数据格式（1=int16, 2=int32, 4=float32）
+**Parameter Descriptions**:
+- `channel_id`: Channel ID (0-15)
+- `sample_rate`: Sample rate in Hz
+- `format`: Data format (1=int16, 2=int32, 4=float32)
 
-**响应示例**:
+**Response Example**:
 ```json
 {
   "success": true,
@@ -248,17 +248,17 @@
 }
 ```
 
-## 触发数据管理API
+## Trigger Data Management API
 
-### 10. 获取触发批次列表
+### 10. Get Trigger Burst List
 
-**接口**: `GET /api/trigger/list`
+**Endpoint**: `GET /api/trigger/list`
 
-**描述**: 获取当前缓存的所有触发批次摘要信息。
+**Description**: Get summary information of all currently cached trigger bursts.
 
-**请求**: 无需参数
+**Request**: No parameters required
 
-**响应示例**:
+**Response Example**:
 ```json
 {
   "success": true,
@@ -279,26 +279,26 @@
 }
 ```
 
-**字段说明**:
-- `burst_id`: 批次唯一标识符
-- `trigger_timestamp`: 触发时间戳
-- `trigger_channel`: 触发通道ID
-- `total_samples`: 总采样点数
-- `duration_ms`: 数据持续时间（毫秒）
-- `created_at`: 批次创建时间
-- `quality`: 数据质量（"Good"/"Warning"/"Error"）
-- `can_save`: 是否可以保存
+**Field Descriptions**:
+- `burst_id`: Unique burst identifier
+- `trigger_timestamp`: Trigger timestamp
+- `trigger_channel`: Trigger channel ID
+- `total_samples`: Total sample count
+- `duration_ms`: Data duration in milliseconds
+- `created_at`: Burst creation time
+- `quality`: Data quality ("Good"/"Warning"/"Error")
+- `can_save`: Whether burst can be saved
 
-### 11. 预览触发批次
+### 11. Preview Trigger Burst
 
-**接口**: `GET /api/trigger/preview/{burst_id}`
+**Endpoint**: `GET /api/trigger/preview/{burst_id}`
 
-**描述**: 获取指定触发批次的详细信息和完整数据。
+**Description**: Get detailed information and complete data for a specific trigger burst.
 
-**路径参数**:
-- `burst_id`: 批次ID
+**Path Parameters**:
+- `burst_id`: Burst ID
 
-**响应示例**:
+**Response Example**:
 ```json
 {
   "success": true,
@@ -367,32 +367,32 @@
 }
 ```
 
-### 12. 保存触发批次
+### 12. Save Trigger Burst
 
-**接口**: `POST /api/trigger/save/{burst_id}`
+**Endpoint**: `POST /api/trigger/save/{burst_id}`
 
-**描述**: 将指定的触发批次数据保存到文件系统。
+**Description**: Save specified trigger burst data to file system.
 
-**路径参数**:
-- `burst_id`: 批次ID
+**Path Parameters**:
+- `burst_id`: Burst ID
 
-**请求体**:
+**Request Body**:
 ```json
 {
   "dir": "experiments/vibration_test",
   "filename": "impact_measurement_001",
   "format": "csv",
-  "description": "50Hz振动冲击测试数据"
+  "description": "50Hz vibration impact test data"
 }
 ```
 
-**参数说明**:
-- `dir`（可选）: 相对于data目录的子目录路径
-- `filename`（可选）: 自定义文件名（不含扩展名）
-- `format`（必需）: 导出格式（"json"/"csv"/"binary"）
-- `description`（可选）: 文件描述信息
+**Parameter Descriptions**:
+- `dir` (optional): Subdirectory path relative to data directory
+- `filename` (optional): Custom filename (without extension)
+- `format` (required): Export format ("json"/"csv"/"binary")
+- `description` (optional): File description
 
-**响应示例**:
+**Response Example**:
 ```json
 {
   "success": true,
@@ -416,7 +416,7 @@
 }
 ```
 
-**错误响应示例**:
+**Error Response Example**:
 ```json
 {
   "success": false,
@@ -426,16 +426,16 @@
 }
 ```
 
-### 13. 删除触发批次
+### 13. Delete Trigger Burst
 
-**接口**: `DELETE /api/trigger/delete/{burst_id}`
+**Endpoint**: `DELETE /api/trigger/delete/{burst_id}`
 
-**描述**: 从缓存中删除指定的触发批次。
+**Description**: Delete specified trigger burst from cache.
 
-**路径参数**:
-- `burst_id`: 批次ID
+**Path Parameters**:
+- `burst_id`: Burst ID
 
-**响应示例**:
+**Response Example**:
 ```json
 {
   "success": true,
@@ -445,22 +445,22 @@
 }
 ```
 
-## 文件管理API
+## File Management API
 
-### 14. 列出文件
+### 14. List Files
 
-**接口**: `GET /api/files`
+**Endpoint**: `GET /api/files`
 
-**描述**: 列出数据目录中的文件。
+**Description**: List files in data directory.
 
-**查询参数**:
-- `dir`（可选）: 子目录路径
+**Query Parameters**:
+- `dir` (optional): Subdirectory path
 
-**示例**: 
-- `GET /api/files` - 列出根目录文件
-- `GET /api/files?dir=experiments` - 列出experiments子目录文件
+**Examples**:
+- `GET /api/files` - List root directory files
+- `GET /api/files?dir=experiments` - List experiments subdirectory files
 
-**响应示例**:
+**Response Example**:
 ```json
 {
   "success": true,
@@ -483,44 +483,44 @@
 }
 ```
 
-**字段说明**:
-- `filename`: 相对路径文件名
-- `size_bytes`: 文件大小（字节）
-- `created_at`: 创建时间戳
-- `file_type`: 文件类型（"binary"/"json"/"raw_frames"/"unknown"）
+**Field Descriptions**:
+- `filename`: Relative path filename
+- `size_bytes`: File size in bytes
+- `created_at`: Creation timestamp
+- `file_type`: File type ("binary"/"json"/"raw_frames"/"unknown")
 
-### 15. 下载文件
+### 15. Download File
 
-**接口**: `GET /api/files/{filename}`
+**Endpoint**: `GET /api/files/{filename}`
 
-**描述**: 下载指定文件。支持子目录路径。
+**Description**: Download specified file. Supports subdirectory paths.
 
-**路径参数**:
-- `filename`: 文件路径（支持子目录，如 "experiments/data.bin"）
+**Path Parameters**:
+- `filename`: File path (supports subdirectories, e.g., "experiments/data.bin")
 
-**重要说明**:
-- **URL编码**: 当文件名包含特殊字符（如斜杠、空格、中文等）时，必须进行URL编码
-- **子目录路径**: 支持子目录格式，如 `subfolder/file.bin` 需编码为 `subfolder%2Ffile.bin`
+**Important Notes**:
+- **URL Encoding**: When filename contains special characters (slashes, spaces, Chinese characters, etc.), URL encoding is required
+- **Subdirectory Paths**: Supports subdirectory format, e.g., `subfolder/file.bin` needs to be encoded as `subfolder%2Ffile.bin`
 
-**请求示例**:
+**Request Examples**:
 ```bash
-# 根目录文件
+# Root directory file
 GET /api/files/data.bin
 
-# 子目录文件（需要URL编码）
+# Subdirectory file (requires URL encoding)
 GET /api/files/experiments%2Ftest_data.csv
-# 对应原始路径: experiments/test_data.csv
+# Original path: experiments/test_data.csv
 ```
 
-**JavaScript调用示例**:
+**JavaScript Example**:
 ```javascript
-// 正确的编码方式
+// Correct encoding method
 const filename = "test_output/data.csv";
 const url = `/api/files/${encodeURIComponent(filename)}`;
 fetch(url).then(response => response.blob());
 ```
 
-**Python调用示例**:
+**Python Example**:
 ```python
 import urllib.parse
 
@@ -529,23 +529,23 @@ encoded_filename = urllib.parse.quote(filename, safe='')
 url = f"/api/files/{encoded_filename}"
 ```
 
-**响应**: 
-- **成功**: 返回二进制文件内容，包含适当的Content-Type和Content-Disposition头
-- **失败**: 返回404状态码
+**Response**:
+- **Success**: Returns binary file content with appropriate Content-Type and Content-Disposition headers
+- **Failure**: Returns 404 status code
 
-**响应头示例**:
+**Response Headers Example**:
 ```
 Content-Type: application/octet-stream
 Content-Disposition: attachment; filename="data.bin"
 ```
 
-### 16. 保存数据文件
+### 16. Save Data File
 
-**接口**: `POST /api/files/save`
+**Endpoint**: `POST /api/files/save`
 
-**描述**: 保存base64编码的数据到文件系统。
+**Description**: Save base64-encoded data to file system.
 
-**请求体**:
+**Request Body**:
 ```json
 {
   "dir": "measurements/2024-01-01",
@@ -554,12 +554,12 @@ Content-Disposition: attachment; filename="data.bin"
 }
 ```
 
-**参数说明**:
-- `dir`（可选）: 相对子目录路径
-- `filename`（可选）: 文件名（不提供则自动生成）
-- `base64`（必需）: base64编码的文件内容
+**Parameter Descriptions**:
+- `dir` (optional): Relative subdirectory path
+- `filename` (optional): Filename (auto-generated if not provided)
+- `base64` (required): Base64-encoded file content
 
-**响应示例**:
+**Response Example**:
 ```json
 {
   "success": true,
@@ -569,17 +569,17 @@ Content-Disposition: attachment; filename="data.bin"
 }
 ```
 
-## 系统信息API
+## System Information API
 
-### 17. 健康检查
+### 17. Health Check
 
-**接口**: `GET /health`
+**Endpoint**: `GET /health`
 
-**描述**: 检查系统健康状态。
+**Description**: Check system health status.
 
-**请求**: 无需参数
+**Request**: No parameters required
 
-**响应示例**:
+**Response Example**:
 ```json
 {
   "success": true,
@@ -595,13 +595,13 @@ Content-Disposition: attachment; filename="data.bin"
 }
 ```
 
-### 18. API信息
+### 18. API Information
 
-**接口**: `GET /`
+**Endpoint**: `GET /`
 
-**描述**: 获取API的基本信息和可用端点列表。
+**Description**: Get API basic information and available endpoints list.
 
-**响应示例**:
+**Response Example**:
 ```json
 {
   "name": "Data Gateway API",
@@ -642,26 +642,26 @@ Content-Disposition: attachment; filename="data.bin"
     },
     "websocket": "ws://<host>:<port>"
   },
-  "documentation": "https://github.com/your-repo/data-gateway"
+  "documentation": "https://github.com/edgedaq/trigger-daq"
 }
 ```
 
-## WebSocket实时接口
+## WebSocket Real-time Interface
 
-### 连接地址
+### Connection Address
 
 `ws://127.0.0.1:8081`
 
-### 连接流程
+### Connection Flow
 
-1. 建立WebSocket连接
-2. 接收欢迎消息
-3. 发送订阅消息（可选）
-4. 接收实时数据
+1. Establish WebSocket connection
+2. Receive welcome message
+3. Send subscription message (optional)
+4. Receive real-time data
 
-### 订阅控制
+### Subscription Control
 
-**发送订阅消息**:
+**Send Subscription Message**:
 ```json
 {
   "type": "subscribe",
@@ -669,15 +669,15 @@ Content-Disposition: attachment; filename="data.bin"
 }
 ```
 
-**可用频道**:
-- `"all"`: 订阅所有事件
-- `"data"`: 订阅数据流
-- `"trigger_events"`: 订阅触发事件通知
-- `"trigger_bursts"`: 订阅触发批次完成通知
-- `"continuous_only"`: 仅订阅连续模式数据
-- `"trigger_only"`: 仅订阅触发模式数据
+**Available Channels**:
+- `"all"`: Subscribe to all events
+- `"data"`: Subscribe to data stream
+- `"trigger_events"`: Subscribe to trigger event notifications
+- `"trigger_bursts"`: Subscribe to trigger burst completion notifications
+- `"continuous_only"`: Subscribe to continuous mode data only
+- `"trigger_only"`: Subscribe to trigger mode data only
 
-**订阅确认响应**:
+**Subscription Confirmation Response**:
 ```json
 {
   "type": "subscription_updated",
@@ -693,9 +693,9 @@ Content-Disposition: attachment; filename="data.bin"
 }
 ```
 
-### WebSocket消息类型
+### WebSocket Message Types
 
-#### 欢迎消息
+#### Welcome Message
 ```json
 {
   "type": "welcome",
@@ -710,7 +710,7 @@ Content-Disposition: attachment; filename="data.bin"
 }
 ```
 
-#### 实时数据流
+#### Real-time Data Stream
 ```json
 {
   "type": "data",
@@ -742,7 +742,7 @@ Content-Disposition: attachment; filename="data.bin"
 }
 ```
 
-#### 触发事件通知
+#### Trigger Event Notification
 ```json
 {
   "type": "trigger_event",
@@ -754,7 +754,7 @@ Content-Disposition: attachment; filename="data.bin"
 }
 ```
 
-#### 触发批次完成通知
+#### Trigger Burst Complete Notification
 ```json
 {
   "type": "trigger_burst_complete",
@@ -783,16 +783,16 @@ Content-Disposition: attachment; filename="data.bin"
 }
 ```
 
-#### Ping/Pong心跳
+#### Ping/Pong Heartbeat
 
-**发送Ping**:
+**Send Ping**:
 ```json
 {
   "type": "ping"
 }
 ```
 
-**接收Pong**:
+**Receive Pong**:
 ```json
 {
   "type": "pong",
@@ -800,70 +800,70 @@ Content-Disposition: attachment; filename="data.bin"
 }
 ```
 
-## 错误处理
+## Error Handling
 
-### HTTP状态码
+### HTTP Status Codes
 
-- `200 OK`: 请求成功
-- `400 Bad Request`: 请求参数错误
-- `404 Not Found`: 资源不存在
-- `500 Internal Server Error`: 服务器内部错误
+- `200 OK`: Request successful
+- `400 Bad Request`: Request parameter error
+- `404 Not Found`: Resource not found
+- `500 Internal Server Error`: Server internal error
 
-### 错误响应格式
+### Error Response Format
 
 ```json
 {
   "success": false,
   "data": null,
-  "error": "具体错误信息",
+  "error": "Specific error message",
   "timestamp": 1704067200000
 }
 ```
 
-### 常见错误
+### Common Errors
 
-1. **设备未连接**: "Device not connected"
-2. **无效格式**: "Invalid format. Supported: [\"json\", \"csv\", \"binary\"]"
-3. **批次不存在**: "Trigger burst not found"
-4. **模式错误**: "Device not in trigger mode"
-5. **参数错误**: "Invalid parameter"
+1. **Device not connected**: "Device not connected"
+2. **Invalid format**: "Invalid format. Supported: [\"json\", \"csv\", \"binary\"]"
+3. **Burst not found**: "Trigger burst not found"
+4. **Mode error**: "Device not in trigger mode"
+5. **Parameter error**: "Invalid parameter"
 
-## 开发建议
+## Development Recommendations
 
-### 前端开发最佳实践
+### Frontend Development Best Practices
 
-1. **状态轮询**: 定期调用`/api/control/status`获取系统状态
-2. **WebSocket重连**: 实现自动重连机制处理网络中断
-3. **错误处理**: 统一处理API错误响应
-4. **数据可视化**: 使用WebSocket数据流进行实时图表绘制
-5. **批次管理**: 实现触发批次的列表、预览、保存界面
-6. **文件管理**: 提供文件上传下载功能
+1. **Status Polling**: Regularly call `/api/control/status` to get system status
+2. **WebSocket Reconnection**: Implement automatic reconnection for network interruptions
+3. **Error Handling**: Unified handling of API error responses
+4. **Data Visualization**: Use WebSocket data stream for real-time charting
+5. **Burst Management**: Implement trigger burst list, preview, and save interface
+6. **File Management**: Provide file upload and download functionality
 
-### 性能优化
+### Performance Optimization
 
-1. **数据缓冲**: WebSocket数据量大时使用缓冲机制
-2. **选择性订阅**: 根据需要订阅特定数据类型
-3. **文件分页**: 文件列表支持分页显示
-4. **内存管理**: 及时清理不需要的数据和DOM元素
+1. **Data Buffering**: Use buffering mechanism when WebSocket data volume is large
+2. **Selective Subscription**: Subscribe to specific data types as needed
+3. **File Pagination**: Support pagination display for file lists
+4. **Memory Management**: Timely cleanup of unnecessary data and DOM elements
 
-### 安全考虑
+### Security Considerations
 
-1. **输入验证**: 验证所有用户输入
-2. **文件路径**: 防止路径遍历攻击
-3. **数据大小**: 限制上传文件大小
-4. **连接限制**: 控制WebSocket连接数量
+1. **Input Validation**: Validate all user inputs
+2. **File Paths**: Prevent path traversal attacks
+3. **Data Size**: Limit upload file size
+4. **Connection Limits**: Control WebSocket connection count
 
-## 示例代码
+## Example Code
 
-### JavaScript WebSocket客户端
+### JavaScript WebSocket Client
 
 ```javascript
 const ws = new WebSocket('ws://127.0.0.1:8081');
 
 ws.onopen = function() {
-    console.log('WebSocket连接已建立');
-    
-    // 订阅所有事件
+    console.log('WebSocket connection established');
+
+    // Subscribe to all events
     ws.send(JSON.stringify({
         type: 'subscribe',
         channels: ['all']
@@ -872,40 +872,40 @@ ws.onopen = function() {
 
 ws.onmessage = function(event) {
     const message = JSON.parse(event.data);
-    
+
     switch(message.type) {
         case 'welcome':
-            console.log('收到欢迎消息:', message.client_id);
+            console.log('Received welcome message:', message.client_id);
             break;
-            
+
         case 'data':
-            // 处理实时数据
+            // Handle real-time data
             updateChart(message.data);
             break;
-            
+
         case 'trigger_event':
-            console.log('触发事件:', message);
+            console.log('Trigger event:', message);
             break;
-            
+
         case 'trigger_burst_complete':
-            console.log('触发批次完成:', message.burst_id);
+            console.log('Trigger burst complete:', message.burst_id);
             refreshTriggerList();
             break;
     }
 };
 ```
 
-### JavaScript API调用示例
+### JavaScript API Call Examples
 
 ```javascript
-// 获取系统状态
+// Get system status
 async function getSystemStatus() {
     const response = await fetch('/api/control/status');
     const result = await response.json();
     return result;
 }
 
-// 启动数据采集
+// Start data collection
 async function startCollection() {
     const response = await fetch('/api/control/start', {
         method: 'POST'
@@ -914,7 +914,7 @@ async function startCollection() {
     return result;
 }
 
-// 保存触发批次
+// Save trigger burst
 async function saveTriggerBurst(burstId, options) {
     const response = await fetch(`/api/trigger/save/${burstId}`, {
         method: 'POST',
@@ -927,3 +927,13 @@ async function saveTriggerBurst(burstId, options) {
     return result;
 }
 ```
+
+---
+
+For more information, please refer to:
+- [Protocol Documentation](protocol_doc_en.md)
+- [Architecture Documentation](ARCHITECTURE_en.md)
+- [FAQ](FAQ_en.md)
+
+**Documentation Version**: 1.0
+**Last Updated**: 2025-01-07
