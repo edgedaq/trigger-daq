@@ -1,0 +1,13 @@
+# Object files
+*.o
+
+# Dependency files
+*.d
+
+# Executable files
+*.exe
+
+# IDE files
+.vscode/
+
+build

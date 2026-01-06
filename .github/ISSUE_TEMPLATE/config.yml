@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📖 查看文档
+    url: https://github.com/edgedaq/trigger-daq/tree/main/docs
+    about: 查看详细的项目文档和API参考
+  - name: 💬 社区讨论
+    url: https://github.com/edgedaq/trigger-daq/discussions
+    about: 参与社区讨论，分享经验和想法
