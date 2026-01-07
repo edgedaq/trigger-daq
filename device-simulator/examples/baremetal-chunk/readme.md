@@ -149,4 +149,4 @@ void SysTick_Handler(void){
 
 ## 许可
 
-按你的主仓库许可发布（建议 MIT/BSD/Apache-2.0）。
+Apache-2.0
