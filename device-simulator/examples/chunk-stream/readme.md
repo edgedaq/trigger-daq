@@ -246,4 +246,4 @@ app_process_tx_buffer()         transport->send()
 
 ## 许可
 
-按照你项目的主仓库许可发布（建议 MIT/BSD/Apache-2.0 之一）。如果需要，我可以附一份标准许可文本。
+Apache-2.0
